@@ -16,11 +16,11 @@ jobs:
       - name: Build
         run: 'hugo'
      
-      - name: Sync Files
-        uses: SamKirkland/web-deploy@v1
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          target-server: ${{ secrets.SERVER_HOST }}
-          remote-user: ${{ secrets.SERVER_USERNAME }}
-          private-ssh-key: ${{ secrets.SERVER_SSH_KEY }}
-          source-path: ./public/
-          destination-path: ~/public_html/tutorials-share/
+          server: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          protocol: ftps
+          port: 22
