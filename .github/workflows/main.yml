@@ -24,5 +24,6 @@ jobs:
           server: '${{ secrets.SERVER_HOST }}'
           port: '${{ secrets.SERVER_PORT }}'
           local_path: './public/*'
-          remote_path: './public_html/tutorials-share'
+          remote_path: '/public_html/tutorials-share'
           sftpArgs: '-o ConnectTimeout=5'
+          sftp_only: true
