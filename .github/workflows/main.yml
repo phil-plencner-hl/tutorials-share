@@ -15,15 +15,15 @@ jobs:
       - name: Build
         # remove --minify tag if you do not need it
         # docs: https://gohugo.io/hugo-pipes/minification/
-        run: hugo --minify
-
-        - name: deploy file to server
+        run: 'hugo --minify'
+      
+      - name: deploy file to server
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-            username: '${{ secrets.SERVER_USERNAME }}'
-            password: ${{ secrets.SERVER_PASSWORD }}
-            server: '${{ secrets.SERVER_HOST }}'
-            port: '${{ secrets.SERVER_PORT }}'
-            local_path: './public/*'
-            remote_path: './public_html/tutorials-share'
-            sftpArgs: '-o ConnectTimeout=5'
+          username: '${{ secrets.SERVER_USERNAME }}'
+          password: ${{ secrets.SERVER_PASSWORD }}
+          server: '${{ secrets.SERVER_HOST }}'
+          port: '${{ secrets.SERVER_PORT }}'
+          local_path: './public/*'
+          remote_path: './public_html/tutorials-share'
+          sftpArgs: '-o ConnectTimeout=5'
