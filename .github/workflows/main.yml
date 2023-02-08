@@ -24,3 +24,5 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           protocol: ftps
           port: ${{ secrets.SERVER_PORT }}
+          local-dir: ./public/
+          server-dir: ~/public_html/tutorials-share/
