@@ -15,16 +15,14 @@ jobs:
 
       - name: Build
         run: 'hugo'
-      
+     
       - name: deploy file to server
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          username: '${{ secrets.SERVER_USERNAME }}'
+          server: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          server: '${{ secrets.SERVER_HOST }}'
-          port: '${{ secrets.SERVER_PORT }}'
-          local_path: './public/*'
-          remote_path: '/public_html/tutorials-share'
-          sftpArgs: '-o ConnectTimeout=5'
-          sftp_only: true
-       
+          port: ${{ secrets.SERVER_PORT }}
+          local-dir: ./public/
+          server-dir: /public_html/tutorials-share
+          
