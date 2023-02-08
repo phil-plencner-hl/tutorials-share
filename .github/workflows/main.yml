@@ -2,7 +2,7 @@ name: CI
 on: push
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
@@ -16,11 +16,15 @@ jobs:
       - name: Build
         run: 'hugo'
       
-      - name: depoy file to server
-        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      - name: deploy file to server
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          user: ${{ secrets.SERVER_USERNAME }}
-          pass: ${{ secrets.SERVER_PASSWORD }}
-          scp: |
-            './public/*' => /public_html/tutorials-share/          
+          username: '${{ secrets.SERVER_USERNAME }}'
+          password: ${{ secrets.SERVER_PASSWORD }}
+          server: '${{ secrets.SERVER_HOST }}'
+          port: '${{ secrets.SERVER_PORT }}'
+          local_path: './public/*'
+          remote_path: '/public_html/tutorials-share'
+          sftpArgs: '-o ConnectTimeout=5'
+          sftp_only: true
+       
