@@ -17,7 +17,7 @@ jobs:
         run: 'hugo'
      
       - name: deploy file to server
-        uses: SamKirkland/FTP-Deploy-Action@3.1.2
+        uses: SamKirkland/FTP-Deploy-Action@v3.1.2-patch
         with:
           ftp-server: ${{ secrets.SERVER_HOST }}
           ftp-username: ${{ secrets.SERVER_USERNAME }}
