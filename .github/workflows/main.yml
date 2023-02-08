@@ -16,14 +16,11 @@ jobs:
       - name: Build
         run: 'hugo'
       
-      - name: deploy file to server
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: depoy file to server
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         with:
-          username: '${{ secrets.SERVER_USERNAME }}'
-          password: ${{ secrets.SERVER_PASSWORD }}
-          server: '${{ secrets.SERVER_HOST }}'
-          port: '${{ secrets.SERVER_PORT }}'
-          local_path: './public/*'
-          remote_path: '/public_html/tutorials-share'
-          sftpArgs: '-o ConnectTimeout=5'
-          sftp_only: true
+          host: ${{ secrets.SERVER_HOST }}
+          user: ${{ secrets.SERVER_USERNAME }}
+          pass: ${{ secrets.SERVER_PASSWORD }}
+          scp: |
+            './public/*' => /public_html/tutorials-share/          
