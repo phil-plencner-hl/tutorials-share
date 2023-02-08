@@ -13,9 +13,7 @@ jobs:
           hugo-version: "0.110.0"
 
       - name: Build
-        # remove --minify tag if you do not need it
-        # docs: https://gohugo.io/hugo-pipes/minification/
-        run: 'hugo --minify'
+        run: 'hugo'
       
       - name: deploy file to server
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
