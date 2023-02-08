@@ -24,5 +24,4 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
           local-dir: ./public/
-          server-dir: /public_html/tutorials-share
-          
+          server-dir: /public_html/tutorials-share/
