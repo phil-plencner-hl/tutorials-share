@@ -28,4 +28,4 @@ jobs:
           protocol: ftps
           port: ${{ secrets.SERVER_PORT }}
           local-dir: ./public/
-          server-dir: /home/philshar/public_html/tutorials-share/
+          server-dir: ~/public_html/tutorials-share/
